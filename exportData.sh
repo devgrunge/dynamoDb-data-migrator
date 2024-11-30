@@ -19,9 +19,12 @@ echo "$table_list"
 echo "Do you want to export data from all DynamoDB tables? [Y/N]"
 read -e needExport
 
+echo "Wich is the limit of items to be fetched?"
+read -e batch_limit
+
 if [[ "$needExport" == "Y" || "$needExport" == "y" ]]
 then
-    max_items=100
+    max_items=$batch_limit
     total_start_time="$(date -u +%s)"
 
     for table_name in $table_list
